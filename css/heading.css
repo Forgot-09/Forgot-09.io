@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700&display=swap');
+
+@font-face {
+    font-family: 'digital clock';
+    src: url("../font/SFDigitalReadout-Light.ttf");
+}
+
+#heading{
+    color:beige;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+#heading h2{
+    margin-top:3px;
+    font-family: 'Nanum Gothic', 'Arial Narrow', Arial, sans-serif;
+    font-size:32.5px;
+}
+#weather{
+    font-size:10px;
+}
