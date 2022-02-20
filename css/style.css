@@ -1,0 +1,11 @@
+.hidden{
+    /* if don't need login form, disapaering the form */
+    display:none;
+}
+
+#clock {
+    margin-top:0; margin-bottom:0;
+    margin-right: 10px;
+    font-family: sans-serif;
+    color:beige;
+}
