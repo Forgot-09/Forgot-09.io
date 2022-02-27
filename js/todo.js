@@ -3,6 +3,7 @@ const todoInput = todoForm.querySelector("input");
 const todoList = document.getElementById("todo-list");
 
 let todoes = [];
+let todoOBJ = 0;
 
 const LOCALSTORAGE_KEY = "todoes";
 
@@ -59,8 +60,10 @@ function handleSumbit(event) {
         "id":Date.now(),
         "time":saveTime,
     };
+    todoOBJ = newTodoObj;
     todoes.push(newTodoObj);
     todoInput.value = "";
+    todoTime.value = "";
     printTodo(newTodoObj);
     saveTodoes();
 }

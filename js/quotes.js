@@ -1,7 +1,7 @@
 quotes = [
     {
         quote : "Only dead fish go with a flow",
-        toKorean : "오직 죽은 물고기만이 물결을 따라 움직안디",
+        toKorean : "오직 죽은 물고기만이 물결을 따라 움직인다",
         quoteBy : "Andy Hunt"
     },
     {

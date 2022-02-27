@@ -5,17 +5,21 @@
     src: url("../font/SFDigitalReadout-Light.ttf");
 }
 
+#clock {
+    margin-top:0; margin-bottom:0;
+    margin-right: 10px;
+    font-family: sans-serif;
+    color:beige;
+}
+
 #heading{
     color:beige;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    font-size:1vw;
 }
 #heading h2{
     margin-top:3px;
     font-family: 'Nanum Gothic', 'Arial Narrow', Arial, sans-serif;
-    font-size:32.5px;
-}
-#weather{
-    font-size:10px;
 }
