@@ -1,6 +1,4 @@
-if(Notification.permission !== "granted") {
-    Notification.requestPermission()
-}
+Notification.requestPermission()
 
 let time = 0;
 
