@@ -1,60 +1,94 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset = "utf-8">
-        <meta name="viewport" width="device-width" inital-sclae=1.0 minimum-scale=1>
-        <title>momentum clone coding</title>
-        <link rel = "stylesheet" href = "./css/style.css">
-        <link rel = "stylesheet" href = "./css/input.css">
-        <link rel = "stylesheet" href = "./css/greeting.css"></link>
-        <link rel = "stylesheet" href = "./css/heading.css"></link>
-        <link rel = "stylesheet" href = "./css/todo.css"></link>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    </head>
-    <body style = "font-family: sans-serif;">
-    <div id = "heading">
-        <h2 id = "clock"></h2>
-        <div id = "quote">
-            <p style = "margin:0px; font-size:12px;"></p>
-            <span style = "font-size:10px; margin-top:0px; margin-bottom:0px;"></span>
-            <span style = "font-size:10px;"></span>
-        </div>  
-        <div id = "weather">
-            <span>loading...</span>
-            <span></span>
-        </div>
-    </div>
-        <form id="login-form" class = "hidden">
-            <div>
-                <input required minlength= "2" maxlength="15" type = "text" placeholder = "input yout name">
-                <input id = "like_button" type = "submit" value = "Login">
-            </div>
-        </form>
+<head>
+<title>Study With Me</title>
+<style>
+  body, html {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+  }
+  .video-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  #player {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100vw;
+    height: 56.25vw;
+    min-height: 100%;
+    min-width: 177.77777778vh;
+    pointer-events: none;
+  }
+  .sound-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.9); /* 버튼이 잘 보이도록 반투명 배경 추가 */
+    border: none;
+    color: white;
+    font-size: 2em;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+</style>
+</head>
+<body>
+<div class="video-container">
+  <div id="player"></div>
+</div>
+<button id="soundButton" class="sound-button">소리 켜기</button>
 
-        <div id = "text">
-            <h1 id = "greeting" class = "hidden" style = "text-align:center"></h1>
-            
-            <h4 style = "margin-left:50px;">todo list</h4>
-            <div id = "toDoMain" style = "display:flex; align-items: flex-start;">
-                <button class = "addTodo" type = "button">+</button>
-                <form id="todo-form">
-                    <input class = "hidden text" type = "text" required placeholder="Write a todo" style = "margin-bottom:10px;"><br>
-                    <input class = "hidden time" type = "time" style = "margin-top:10px;">
-                </form>
-            </div>
-            <ul id = "todo-list"></ul>
-        </div>
-        
-        <div id = "import js">
+<script>
+  // 유튜브 IFrame Player API 스크립트 로드
+  var tag = document.createElement('script');
+  tag.src = "https://www.youtube.com/iframe_api";
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-            <script type = "text/javascript" src = "./js/background.js"></script>
-            <script type = "text/javascript" src = "./js/greeting.js"></script>
-            <script type = "text/javascript" src = "./js/clock.js"></script>
-            <script type = "text/javascript" src = "./js/quotes.js"></script>
-            <script type = "text/javascript" src = "./js/todo.js"></script>
-            <script type = "text/javascript" src = "./js/weather.js"></script>
-            <script type = "text/javascript" src = "./js/addTodo.js"></script>
-        </div>
-        <p style = "color:beige; font-family: sans-serif;">이건 완성본이 아닙니다</p>
-    </body>
+  var player;
+  function onYouTubeIframeAPIReady() {
+    player = new YT.Player('player', {
+      videoId: 'KLuTLF3x9sA', // 여기에 영상 ID를 입력하세요
+      playerVars: {
+        'autoplay': 1,
+        'controls': 0,
+        'modestbranding': 1,
+        'rel': 0,
+        'showinfo': 0,
+        'iv_load_policy': 3,
+        'mute': 1 // 음소거 상태로 자동 재생
+      },
+      events: {
+        'onReady': onPlayerReady
+      }
+    });
+  }
+
+  function onPlayerReady(event) {
+    // 플레이어가 준비되면 버튼 표시
+    document.getElementById('soundButton').style.display = 'flex';
+  }
+
+  document.getElementById('soundButton').onclick = function() {
+    if (player && player.isMuted()) {
+      player.unMute(); // 음소거 해제
+      this.style.display = 'none'; // 버튼 숨기기
+    }
+  };
+</script>
+</body>
 </html>
